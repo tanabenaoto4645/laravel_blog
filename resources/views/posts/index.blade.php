@@ -20,6 +20,19 @@
                 </h2>
                 <p class='body'>{{$post->body}}</p>
                 <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
+                <form action="/posts/{{ $post->id }}" id="delete_{{ $post->id }}" method="post" style="display:inline">
+                    @csrf
+                    @method('DELETE')
+                    <input type="button" value="delete" onclick='buttonClick({{ $post->id }}, "{{$post->title}}")'>
+                </form>
+                <script>
+                function buttonClick(id, title){
+                    if(window.confirm(title+"を削除しますか？")){
+                        document.getElementById('delete_'+id).submit();
+                        console.log('delete_'+id );
+                    }
+                }
+                </script>
             </div>
             @endforeach
         </div>
