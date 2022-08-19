@@ -11,7 +11,6 @@
     </head>
     <body>
         <h1>Blog Name</h1>
-        <a href="posts/create">投稿</a>
         <div class='posts'>
             @foreach($posts as $post)
             <div class='post'>
@@ -19,7 +18,7 @@
                     <a href="/posts/{{$post->id}}">{{$post->title}}</a>
                 </h2>
                 <p class='body'>{{$post->body}}</p>
-                <a href="/categories/{{$post->category_id}}/" class="category">{{$post->category->name}}</a>
+                <a href="" class="category">{{$post->category->name}}</a>
                 <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
                 <form action="/posts/{{ $post->id }}" id="delete_{{ $post->id }}" method="post" style="display:inline">
                     @csrf
@@ -39,6 +38,9 @@
         </div>
         <div class='paginate'>
             {{ $posts->links() }}
+        </div>
+        <div class='footer'>
+            <a href="/posts">戻る</a>
         </div>
     </body>
 </html>

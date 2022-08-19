@@ -15,6 +15,8 @@
             <div class='post'>
                 <h2 class='title'>{{$post->title}}</h2>
                 <p class='body'>{{$post->body}}</p>
+                <a href="/categories/{{$post->category_id}}/" class="category">{{$post->category->name}}</a>
+
             </div>
         </div>
         <div class='footer'>
